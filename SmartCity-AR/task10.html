@@ -14,24 +14,40 @@
         {
           var elem = document.documentElement;
           var marker = document.querySelector("#marker");
+          let mymarker = document.querySelector("#mymarker");
           var fullbutton = document.querySelector("#fullscreen");
           var Video_0 = document.querySelector("#Video_Asset_0");
+          let Video_1 = document.querySelector("#Video_Asset_1");
           var button = document.querySelector("#mutebutton");
           button.hidden = true;
           Video_0.pause();
 
-          marker.addEventListener("markerFound", function (evt) {
-            markerFound = 1;
-            button.hidden = false;
-            // Video_0.play();  // if you want the video 
-            // to start immediently on marker detection, uncomment this
+          marker.addEventListener("markerFound", ()=>{
+            onMarkerFound()
           });
 
-          marker.addEventListener("markerLost", function (evt) {
+          marker.addEventListener("markerLost", ()=> {
+            onMarkerLost()
+          });
+
+          mymarker.addEventListener("markerFound", ()=>{
+            onMarkerFound()
+          });
+
+          mymarker.addEventListener("markerLost", ()=> {
+            onMarkerLost()
+          });
+
+          function onMarkerFound() {
+            markerFound = 1;
+            button.hidden = false;
+          }
+          function onMarkerLost() {
             markerFound = 0;
             Video_0.pause();
+            Video_1.pause();
             button.hidden = true;
-          });
+          }
 
           // button for video play/pause
           button.addEventListener("click", function(evt){
@@ -105,8 +121,8 @@
     <a-marker id="marker" preset="hiro" emitevents="true" button>
       <a-video src="#Video_Asset_0" id="Video_0" class="intersectable" width="1" height="1" position="0 0 1" rotation="90 0 0" color="#FFFFFF" transparent=False></a-video>
     </a-marker>
-    <a-marker preset='custom' type='pattern' url='pattern-mymarker.patt'>
-      <a-video src="#Video_Asset_1" id="Video_0" class="intersectable" width="1" height="1" position="0 0 1" rotation="180 180 180" color="#FFFFFF" transparent=False></a-video>
+    <a-marker id="mymarker" preset='custom' type='pattern' url='pattern-mymarker.patt'>
+      <a-video src="#Video_Asset_1" id="Video_0" class="intersectable" width="1" height="1" position="0 0 1" rotation="0 0 0" color="#FFFFFF" transparent=False></a-video>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
