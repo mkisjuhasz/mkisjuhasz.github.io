@@ -21,6 +21,7 @@
           var button = document.querySelector("#mutebutton");
           button.hidden = true;
           Video_0.pause();
+          Video_1.pause();
 
           marker.addEventListener("markerFound", ()=>{
             onMarkerFound()
@@ -126,7 +127,7 @@
       <a-video src="#Video_Asset_0" id="Video_0" class="intersectable" width="1" height="1" position="0 0 1" rotation="90 0 0" color="#FFFFFF" transparent=False></a-video>
     </a-marker>
     <a-marker id="mymarker" preset='custom' type='pattern' url='pattern-mymarker.patt'>
-      <a-video src="#Video_Asset_1" id="Video_0" class="intersectable" width="1" height="1" position="0 0 1" rotation="-90 0 0" color="#FFFFFF" transparent=False></a-video>
+      <a-video src="#Video_Asset_1" id="Video_1" class="intersectable" width="1" height="1" position="0 0 1" rotation="90 0 0" color="#FFFFFF" transparent=False></a-video>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
