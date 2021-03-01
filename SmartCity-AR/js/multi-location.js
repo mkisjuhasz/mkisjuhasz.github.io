@@ -23,7 +23,7 @@ function staticLoadPlaces() {
             lat: 47.032306,
             lng: 19.557175,
         },
-    }
+      }
   ];
 }
 
